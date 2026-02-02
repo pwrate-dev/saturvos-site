@@ -3,138 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaturvOs | 32-bit OS Project</title>
+    <title>SaturvOs | Oficial</title>
     <style>
-        /* --- O ESTILO QUE VOCÊ PASSOU --- */
         :root {
             --amarelo: #FFEA00; 
             --preto: #050505;
-            --cinza: #111111;
-            --texto: #ffffff;
+            --cinza: #181818;
+            --cinza-claro: #252525;
+            --texto-claro: #f0f0f0;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: var(--preto);
-            color: var(--texto);
-            font-family: 'Courier New', Courier, monospace;
-            overflow-x: hidden;
+            background-color: var(--amarelo);
+            color: var(--preto);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
         }
 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--preto);
+            color: var(--texto-claro);
             min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            padding: 40px;
+            border-left: 5px solid var(--preto);
+            border-right: 5px solid var(--preto);
         }
 
-        .lateral {
-            flex: 1;
-            min-width: 300px;
-            background-image: url('fundo.png'); /* Sua imagem de linhas */
-            background-size: cover;
-            background-position: center;
-            border-bottom: 2px solid var(--amarelo);
-            opacity: 0.4;
-        }
-
-        .centro {
-            flex: 2;
-            min-width: 320px;
-            background-color: var(--preto);
-            padding: 50px 20px;
+        header {
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-left: 2px solid var(--amarelo);
-            border-right: 2px solid var(--amarelo);
-            position: relative;
-            z-index: 10;
+            border-bottom: 2px solid var(--amarelo);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        .logo-principal {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 20px;
+        .logo {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             border: 4px solid var(--amarelo);
-            padding: 5px;
-            box-shadow: 0 0 25px rgba(255, 234, 0, 0.3);
+            margin-bottom: 15px;
+            object-fit: cover;
         }
 
         h1 {
             color: var(--amarelo);
-            font-size: 3rem;
-            margin: 0;
+            font-size: 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            margin: 0;
         }
 
-        .status-badge {
-            background-color: var(--amarelo);
-            color: var(--preto);
-            padding: 5px 15px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            display: inline-block;
+        .secao {
+            margin-bottom: 60px;
         }
 
-        .terminal-text {
-            text-align: left;
-            background-color: #0f0f0f;
-            padding: 20px;
-            border: 1px solid #333;
-            margin-top: 30px;
-            width: 85%;
-            font-size: 0.9rem;
+        h2 {
+            color: var(--amarelo);
+            border-left: 4px solid var(--amarelo);
+            padding-left: 15px;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            text-align: justify;
             color: #ccc;
         }
 
-        .cursor { animation: blink 1s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
-
-        .btn-download {
-            margin-top: 40px;
-            padding: 15px 40px;
-            border: 2px solid var(--amarelo);
-            color: var(--amarelo);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: 0.3s;
+        /* --- ESTILO DO BLOG / DEVLOG --- */
+        .blog-post {
+            background-color: var(--cinza);
+            border-left: 3px solid var(--amarelo);
+            padding: 20px;
+            margin-bottom: 20px;
         }
 
-        .btn-download:hover {
+        .blog-data {
+            color: var(--amarelo);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .blog-titulo {
+            font-size: 1.3rem;
+            color: #fff;
+            margin: 0 0 10px 0;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .card-foto {
+            background-color: var(--cinza);
+            border: 1px solid #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-foto img { width: 100%; height: auto; border: 1px solid #444; }
+        .card-foto span { display: block; margin-top: 10px; font-size: 0.9rem; color: var(--amarelo); font-weight: bold; }
+
+        .perfil-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            background-color: var(--cinza);
+            padding: 30px;
+            border: 1px solid #333;
+        }
+
+        .perfil-texto { flex: 2; min-width: 300px; }
+        .perfil-fotos { flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 220px; }
+        .foto-autor { width: 100%; border: 2px solid var(--amarelo); }
+
+        .donate-container {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: var(--cinza);
+            border: 2px dashed var(--amarelo);
+        }
+
+        .btn-donate {
+            display: inline-block;
             background-color: var(--amarelo);
             color: var(--preto);
+            padding: 15px 35px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: 4px;
         }
+
+        footer { text-align: center; margin-top: 50px; font-size: 0.8rem; color: #555; border-top: 1px solid #333; padding-top: 20px; }
+        strong { color: var(--amarelo); }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="lateral"></div>
-
-        <main class="centro">
-            <img src="logo.png" alt="SaturvOs Logo" class="logo-principal">
+    <div class="main-container">
+        <header>
+            <img src="logo.png" alt="SaturvOs Logo" class="logo">
             <h1>SaturvOs</h1>
-            <div class="status-badge">KERNEL STATUS: EM DESENVOLVIMENTO</div>
+            <p style="text-align: center; color: var(--amarelo); letter-spacing: 1px;">"Intelectos Interligados"</p>
+        </header>
 
-            <div class="terminal-text">
-                <p>> Initializing SaturvOs Kernel...</p>
-                <p>> Architecture: x86 32-bit</p>
-                <p>> Loading drivers... [OK]</p>
-                <p>> System ready.</p>
-                <p>> <span class="cursor">_</span></p>
+        <section class="secao">
+            <h2>A Origem do Sistema</h2>
+            <p>Inspirado no lendário <strong>TempleOS</strong>, o SaturvOs evoluiu de 16-bits para <strong>32-bits (800x600)</strong>. No próximo dia 15, a primeira Beta será lançada.</p>
+            <div class="galeria">
+                <div class="card-foto"><img src="saturvos1.png" alt="V1"><span>V1: 16-bits</span></div>
+                <div class="card-foto"><img src="saturvos2.png" alt="V2"><span>V2: 32-bits</span></div>
             </div>
+        </section>
 
-            <a href="https://github.com/pwrate-dev/pwrate-dev.github.io" class="btn-download">VER REPOSITÓRIO</a>
-        </main>
+        <section class="secao">
+            <h2>DevLog - Diário de Bordo</h2>
+            
+            <article class="blog-post">
+                <span class="blog-data">02 DE FEVEREIRO, 2026</span>
+                <h3 class="blog-titulo">Subindo o site oficial e preparando a Beta</h3>
+                <p>Hoje o site do SaturvOs entrou oficialmente no ar via GitHub Pages. Estamos ajustando os últimos detalhes do kernel 32-bits para o lançamento do dia 15. A ansiedade está a mil, mas o progresso está sólido!</p>
+            </article>
 
-        <div class="lateral"></div>
+            <article class="blog-post" style="opacity: 0.7;">
+                <span class="blog-data">15 DE DEZEMBRO, 2025</span>
+                <h3 class="blog-titulo">O nascimento da primeira versão</h3>
+                <p>Primeiro Diário Solitário. O sistema ainda em 16-bits começando a mostrar os primeiros caracteres na tela. Um longo caminho pela frente.</p>
+            </article>
+        </section>
+
+        <section class="secao">
+            <h2>Sobre o Criador</h2>
+            <div class="perfil-container">
+                <div class="perfil-texto">
+                    <p>Meu nome é <strong>João V. Gabriel</strong> (PWRAT). Minha meta é finalizar o sistema até 2030, trazendo vlogs e atualizações constantes para a comunidade.</p>
+                </div>
+                <div class="perfil-fotos">
+                    <img src="pwrate1.png" alt="2025" class="foto-autor">
+                    <img src="pwrate2.png" alt="Atual" class="foto-autor">
+                </div>
+            </div>
+        </section>
+
+        <section class="secao">
+            <h2>Apoie o Desenvolvimento</h2>
+            <div class="donate-container">
+                <p style="color: #fff; margin-bottom: 25px;">Ajude a manter o SaturvOs vivo e acelere o desenvolvimento!</p>
+                <a href="https://livepix.gg/pwrate" target="_blank" class="btn-donate">Apoiar via LivePix</a>
+            </div>
+        </section>
+
+        <footer>SaturvOs Project &copy; 2026 - João V. Gabriel (PWRAT)</footer>
     </div>
 
 </body>
